@@ -1,0 +1,21 @@
+{
+   "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "popup.html"
+   },
+   "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.5.8/angular-resource.min.js; object-src 'self'",
+   "description": "Sm4sh frame data in your browser EVEN FASTER.",
+   "icons": {
+    //   "128": "icon128.png",
+    //   "16": "icon16.png",
+      "19": "icon.png"
+    //   "48": "icon48.png"
+   },
+   "manifest_version": 2,
+   "name": "KuroganeHammer Extension",
+   "permissions": [ "http://api.kuroganehammer.com/api/*/" ],
+   "short_name": "KuroganeHammer Extension",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.1.0",
+   "web_accessible_resources": [ "css/*.css", "js/*.js", "app/*.js", "node_modules/*.js" ]
+}
