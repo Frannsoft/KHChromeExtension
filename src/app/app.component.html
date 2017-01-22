@@ -1,3 +1,17 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+    <div class="imagediv">
+        <img src="http://kuroganehammer.com/logo/KH%20LOGO1.png" />
+    </div>
+
+    <div *ngIf="characters" class="characters-container col-xs-12 col-sm-12 col-md-offset-2 col-md-8 col-md-offset-2">
+        <ul>
+            <li *ngFor="let character of characters" class="box fade-in one characters-list-item">
+                <div>
+                    <a target="_blank" href="{{character.full_url}}" class="characters-link">
+                        <img class="characters-image" [src]="character.thumbnailUrl" title="{{character.displayName}}" />
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

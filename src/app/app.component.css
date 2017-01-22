@@ -1,0 +1,39 @@
+body {
+    background-color: #ECECEC
+}
+
+.imagediv {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.imagediv img {
+    height: 40px;
+}
+
+.container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.characters-container {
+    text-align: center;
+}
+
+.characters-list-item {
+    display: inline-block;
+    float: left;
+    margin: 5px;
+}
+
+.characters-link {
+    width: 50px;
+    height: 50px;
+}
+
+.characters-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
