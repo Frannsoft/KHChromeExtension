@@ -1,7 +1,3 @@
-body {
-    background-color: #ECECEC
-}
-
 .imagediv {
     margin: auto;
     width: 50%;
@@ -23,6 +19,7 @@ body {
 
 .characters-list-item {
     display: inline-block;
+    /*shows last two characters on the left instead of in center */
     float: left;
     margin: 5px;
 }

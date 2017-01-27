@@ -1,6 +1,7 @@
 export class Character {
+    id: number;
     name: string;
-    full_url: string;
+    fullUrl: string;
     displayName: string;
     thumbnailUrl: string;
 }
