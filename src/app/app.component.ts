@@ -3,6 +3,7 @@ import { Character } from './models/character';
 import { KhapiService } from './services/khapi.service';
 import { Charactersort } from './models/charactersort.enum';
 import { CharactersortingService } from './services/charactersorting.service';
+import { CharactersimagesComponent } from './components/charactersimages/charactersimages.component';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,6 @@ export class AppComponent implements OnInit {
 
     let keys = Object.keys(Charactersort);
     this.sortOptions = keys.slice(keys.length / 2);
-    console.log(this.sortOptions);
   }
 
   ngOnInit() {
