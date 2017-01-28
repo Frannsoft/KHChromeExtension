@@ -11,7 +11,7 @@
         "19": "icon.png"
             //   "48": "icon48.png"
     },
-    "manifest_version": 1,
+    "manifest_version": 2,
     "name": "KuroganeHammer Extension",
     "permissions": ["http://api.kuroganehammer.com/api/*/"],
     "short_name": "KuroganeHammer Extension",
