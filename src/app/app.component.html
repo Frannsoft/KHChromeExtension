@@ -7,11 +7,6 @@
             <option *ngFor="let sortOption of sortOptions" [value]="sortOption">{{sortOption}}</option>
         </select>
     </div>
-    <hr>
-    <div>
-        <span>Recently Viewed:</span>
-    </div>
-    <hr>
     <div *ngIf="characters" class="characters-container col-xs-12 col-sm-12 col-md-offset-2 col-md-8 col-md-offset-2">
         <ul>
             <li *ngFor="let character of characters" class="box fade-in one characters-list-item">
