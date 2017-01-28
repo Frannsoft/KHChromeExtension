@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Character } from '../../models/Character';
+import { CharactersView } from '../charactersview';
 
 @Component({
   selector: 'app-characterslist',
   templateUrl: './characterslist.component.html',
   styleUrls: ['./characterslist.component.css']
 })
-export class CharacterslistComponent implements OnInit {
+export class CharacterslistComponent extends CharactersView implements OnInit  {
 
-  constructor() { }
+  constructor() {
+    super();
+   }
 
   ngOnInit() {
   }
