@@ -4,6 +4,9 @@ import { KhapiService } from './services/khapi.service';
 import { Charactersort } from './models/charactersort.enum';
 import { CharactersortingService } from './services/charactersorting.service';
 import { CharactersimagesComponent } from './components/charactersimages/charactersimages.component';
+import { LocalStorageService } from 'angular-2-local-storage';
+import { StorageService } from './services/storage.service';
+import { CharacterSortOption } from './models/CharacterSortOption';
 
 @Component({
   selector: 'app-root',
@@ -12,51 +15,60 @@ import { CharactersimagesComponent } from './components/charactersimages/charact
 })
 export class AppComponent implements OnInit {
 
-  activeCharacterSort: Charactersort;
+  characterSortOptions: Array<CharacterSortOption>;
+
+  activeCharacterSortOption: CharacterSortOption;
   characters: Character[];
 
-  sortOptions: string[];
-
   constructor(private khapiService: KhapiService,
-    private characterSortingService: CharactersortingService) {
-    this.activeCharacterSort = Charactersort.KuroganeHammerOrder;
+    private characterSortingService: CharactersortingService,
+    private storageService: StorageService) {
 
-    let keys = Object.keys(Charactersort);
-    this.sortOptions = keys.slice(keys.length / 2);
+    this.characterSortOptions = [
+      new CharacterSortOption(Charactersort.KuroganeHammerOrder),
+      new CharacterSortOption(Charactersort.DisplayNameAscending),
+      new CharacterSortOption(Charactersort.DisplayNameDescending)
+    ];
   }
 
   ngOnInit() {
-    // get characters
+    // get characters and load sort type
     this.khapiService.getCharacterMetadata()
-      .then(characters => this.characters = characters);
+      .then(characters => {
+        this.characters = characters;
+
+        let storedSortTypeOption = this.storageService.getStoredSortOption();
+
+        if (storedSortTypeOption !== null) {
+          this.sortChars(storedSortTypeOption);
+        }
+      });
   }
 
-  sortCharacters(characterSortType: string) {
+  set characterSortOption(characterSortOption: CharacterSortOption) {
+    this.sortChars(characterSortOption);
+  }
 
-    let sortType: Charactersort = Charactersort[<string>characterSortType];
-    console.log(sortType.toString());
-    // I like separation of cases by brackets, but vs code is 
-    // annoying with warnings here.  That's why they're disabled.
-    switch (sortType) {
-      case Charactersort.KuroganeHammerOrder: {
-        this.characterSortingService.sortByKuroganeHammerSiteOrder(this.characters);
-        break;
-      }
-      // tslint:disable-next-line:no-switch-case-fall-through
-      case Charactersort.DisplayNameAscending: {
-        this.characterSortingService.sortByDisplayNameAscending(this.characters);
-        break;
-      }
-      // tslint:disable-next-line:no-switch-case-fall-through
-      case Charactersort.DisplayNameDescending: {
-        this.characterSortingService.sortByDisplayNameDescending(this.characters);
-        break;
-      }
-      // tslint:disable-next-line:no-switch-case-fall-through
-      default: {
-        console.error('Unexpected activeCharacterSort value of ' + this.activeCharacterSort);
-        break;
-      }
+  get characterSortOption() {
+    return this.activeCharacterSortOption;
+  }
+
+  sortChars(characterSortOption: CharacterSortOption) {
+    this.characterSortingService.sortCharacters(this.characters, characterSortOption);
+    this.assignActiveSortOption(characterSortOption);
+    this.storageService.setStoredSortOption(characterSortOption);
+  }
+
+  assignActiveSortOption(sortOption: CharacterSortOption) {
+    let foundSortOption = this.characterSortOptions.find(option => option.name === sortOption.name);
+
+    if (foundSortOption === undefined) {
+      // assign kh sort order by default
+      this.activeCharacterSortOption = this.characterSortOptions
+        .find(option => option.name === Charactersort.KuroganeHammerOrder.toString());
+    }
+    else {
+      this.activeCharacterSortOption = foundSortOption;
     }
   }
 }

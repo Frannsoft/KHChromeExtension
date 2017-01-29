@@ -3,8 +3,8 @@
         <img src="http://kuroganehammer.com/logo/KH%20LOGO1.png" />
     </div>
     <div>
-        <select (change)="sortCharacters($event.target.value)">
-            <option *ngFor="let sortOption of sortOptions" [value]="sortOption">{{sortOption}}</option>
+        <select [(ngModel)]="characterSortOption">
+            <option *ngFor="let sortOption of characterSortOptions" [ngValue]="sortOption">{{sortOption.name}}</option>
         </select>
     </div>
     <app-charactersimages [characters]="characters"></app-charactersimages>
