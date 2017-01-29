@@ -11,16 +11,10 @@ export class KhapiService {
   // get character metadata for all characters
   getCharacterMetadata(): Promise<Character[]> {
 
-    // this.http.get('http://api.kuroganehammer.com/api/characters')
-    //   .toPromise()
-    //   .then(response => alert(response.json()));
-    
     return this.http.get('http://api.kuroganehammer.com/api/characters')
       .toPromise()
       .then(response => response.json() as Character[])
       .catch(this.handleError);
-    
-
   }
 
   private handleError(error: any): Promise<any> {
