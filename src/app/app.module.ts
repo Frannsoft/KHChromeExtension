@@ -6,7 +6,6 @@ import { KhapiService } from './services/khapi.service';
 import { CharactersortingService } from './services/charactersorting.service';
 import { AppComponent } from './app.component';
 import { CharactersimagesComponent } from './components/charactersimages/charactersimages.component';
-import { MaterialModule } from '@angular/material';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { StorageService } from './services/storage.service';
 
@@ -19,7 +18,6 @@ import { StorageService } from './services/storage.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
     LocalStorageModule.withConfig({
       prefix: 'khchrext',
       storageType: 'localStorage'
