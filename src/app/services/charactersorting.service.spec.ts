@@ -10,7 +10,7 @@ describe('CharactersortingService', () => {
     });
   });
 
-  it('should ...', inject([CharactersortingService], (service: CharactersortingService) => {
+  it('should create character sorting service', inject([CharactersortingService], (service: CharactersortingService) => {
     expect(service).toBeTruthy();
   }));
 });

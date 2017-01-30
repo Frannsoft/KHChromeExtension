@@ -8,9 +8,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { KhapiService } from './services/khapi.service';
+import { KhapiServiceMock } from './services/khapi.service.mock';
 import { CharactersortingService } from './services/charactersorting.service';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { StorageService } from './services/storage.service';
+import { CharacterSortOption } from './models/CharacterSortOption';
+import { Charactersort } from './models/charactersort.enum';
+import { Character } from './models/character';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -28,7 +32,7 @@ describe('AppComponent', () => {
           storageType: 'localStorage'
         })
       ],
-      providers: [KhapiService, CharactersortingService, StorageService],
+      providers: [{ provide: KhapiService, useClass: KhapiServiceMock }, CharactersortingService, StorageService],
     });
     TestBed.compileComponents();
   });
@@ -37,5 +41,69 @@ describe('AppComponent', () => {
     let fixture = TestBed.createComponent(AppComponent);
     let app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
+  }));
+
+  it('should properly re-sort characters when descending Z-A sort used', async(() => {
+    let fixture = TestBed.createComponent(AppComponent);
+    let app: AppComponent = fixture.debugElement.componentInstance;
+
+    app.ngOnInit();
+    fixture.whenStable().then(() => {
+      expect(app.characters).not.toBeUndefined();
+
+      app.sortChars(new CharacterSortOption(Charactersort.DisplayNameDescending));
+
+      let lastCharacter: Character = app.characters[0];
+      expect(lastCharacter.displayName).toBe('Zero Suit Samus');
+    });
+  }));
+
+  it('should properly re-sort character when ascending A-Z sort used', async(() => {
+    let fixture = TestBed.createComponent(AppComponent);
+    let app: AppComponent = fixture.debugElement.componentInstance;
+
+    app.ngOnInit();
+    fixture.whenStable().then(() => {
+      expect(app.characters).not.toBeUndefined();
+
+      app.sortChars(new CharacterSortOption(Charactersort.DisplayNameAscending));
+
+      let lastCharacter: Character = app.characters[0];
+      expect(lastCharacter.displayName).toBe('Yoshi');
+    });
+  }));
+
+  it('should properly re-sort character when KuroganeHammer id order sort used', async(() => {
+    let fixture = TestBed.createComponent(AppComponent);
+    let app: AppComponent = fixture.debugElement.componentInstance;
+
+    app.ngOnInit();
+    fixture.whenStable().then(() => {
+      expect(app.characters).not.toBeUndefined();
+
+      // mixup the sort order since kh order is default      
+      app.sortChars(new CharacterSortOption(Charactersort.DisplayNameDescending));
+      app.sortChars(new CharacterSortOption(Charactersort.KuroganeHammerOrder));
+
+      let lastCharacter: Character = app.characters[0];
+      expect(lastCharacter.displayName).toBe('Yoshi');
+    });
+  }));
+
+  it('should properly re-sort character when sort option set', async(() => {
+    let fixture = TestBed.createComponent(AppComponent);
+    let app: AppComponent = fixture.debugElement.componentInstance;
+
+    app.ngOnInit();
+    fixture.whenStable().then(() => {
+      expect(app.characters).not.toBeUndefined();
+
+      app.sortChars(new CharacterSortOption(Charactersort.KuroganeHammerOrder));
+      expect(app.characters[0].displayName).toBe('Yoshi');
+
+      app.characterSortOption = new CharacterSortOption(Charactersort.DisplayNameDescending);
+
+      expect(app.characters[0].displayName).toBe('Zero Suit Samus');
+    });
   }));
 });
