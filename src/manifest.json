@@ -10,6 +10,7 @@
         "16": "icon16.png",
         "48": "icon48.png"
     },
+    "author": "@FrannDotExe",
     "manifest_version": 2,
     "name": "KuroganeHammer Smash Wii U Chrome Extension",
     "permissions": ["http://api.kuroganehammer.com/api/*/", "storage"],
