@@ -8,7 +8,9 @@
         "outDir": "dist",
         "assets": [
             "favicon.ico",
-            "icon.png",
+            "icon16.png",
+            "icon48.png",
+            "icon128.png",
             "manifest.json"
         ],
         "index": "index.html",
