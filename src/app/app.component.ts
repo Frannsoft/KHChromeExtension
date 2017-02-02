@@ -25,9 +25,8 @@ export class AppComponent implements OnInit {
     private storageService: StorageService) {
 
     this.characterSortOptions = [
-      new CharacterSortOption(Charactersort.KuroganeHammerOrder),
-      new CharacterSortOption(Charactersort.DisplayNameAscending),
-      new CharacterSortOption(Charactersort.DisplayNameDescending)
+      new CharacterSortOption(Charactersort.Ascending),
+      new CharacterSortOption(Charactersort.Descending)
     ];
   }
 
@@ -65,7 +64,7 @@ export class AppComponent implements OnInit {
     if (foundSortOption === undefined) {
       // assign kh sort order by default
       this.activeCharacterSortOption = this.characterSortOptions
-        .find(option => option.name === Charactersort.KuroganeHammerOrder.toString());
+        .find(option => option.name === Charactersort.Ascending.toString());
     }
     else {
       this.activeCharacterSortOption = foundSortOption;

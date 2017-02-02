@@ -1,8 +1,8 @@
 export enum Charactersort {
   // By character id ascending (1-x)
-    KuroganeHammerOrder,
+    // KuroganeHammerOrder,
     // By display name ascending (A-Z)
-    DisplayNameAscending,
+    Ascending,
     // By display name descending (Z-A)
-    DisplayNameDescending
+    Descending
 }

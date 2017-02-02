@@ -12,17 +12,17 @@ export class CharactersortingService {
     // I like separation of cases by brackets, but vs code is 
     // annoying with warnings here.  That's why they're disabled.
     switch (characterSortOption.sortType) {
-      case Charactersort.KuroganeHammerOrder: {
-        this.sortByKuroganeHammerSiteOrder(characters);
-        break;
-      }
+      // case Charactersort.KuroganeHammerOrder: {
+      //   this.sortByKuroganeHammerSiteOrder(characters);
+      //   break;
+      // }
       // tslint:disable-next-line:no-switch-case-fall-through
-      case Charactersort.DisplayNameAscending: {
+      case Charactersort.Ascending: {
         this.sortByDisplayNameAscending(characters);
         break;
       }
       // tslint:disable-next-line:no-switch-case-fall-through
-      case Charactersort.DisplayNameDescending: {
+      case Charactersort.Descending: {
         this.sortByDisplayNameDescending(characters);
         break;
       }

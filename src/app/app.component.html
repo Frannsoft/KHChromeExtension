@@ -3,9 +3,13 @@
         <img src="http://kuroganehammer.com/logo/KH%20LOGO1.png" />
     </div>
     <div>
-        <select [(ngModel)]="characterSortOption">
+        <label>Order:</label>
+        <select class="green" [(ngModel)]="characterSortOption">
             <option *ngFor="let sortOption of characterSortOptions" [ngValue]="sortOption">{{sortOption.name}}</option>
         </select>
     </div>
     <app-charactersimages [characters]="characters"></app-charactersimages>
+    <br>
+    <span class="footer-left">Feedback? FrannSoftDev@outlook.com</span>
+    <span class="footer-right">Powered by the <a target="_blank" href="https://github.com/Frannsoft/FrannHammer">FrannHammer API</a></span>
 </div>

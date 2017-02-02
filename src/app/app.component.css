@@ -12,3 +12,49 @@
     width: 500px;
     margin: 0 auto;
 }
+
+.footer-right {
+    float: right;
+    font-size: x-small;
+}
+
+.footer-left {
+    float: left;
+    font-size: x-small;
+}
+
+select {
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='45px' height='45px'><polyline points='46.139,15.518 25.166,36.49 4.193,15.519'/></svg>");
+    background-color: #8b9e93;
+    background-repeat: no-repeat;
+    background-position: right 4px top 4px;
+    background-size: 16px 16px;
+    color: black;
+    padding: 5px 15px 5px 5px;
+    width: auto;
+    font-family: arial, tahoma;
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    -webkit-transition: 0.3s ease all;
+    -moz-transition: 0.3s ease all;
+    -ms-transition: 0.3s ease all;
+    -o-transition: 0.3s ease all;
+    transition: 0.3s ease all;
+}
+
+select:hover {
+    background-color: #5e6b64;
+}
+
+select:focus,
+select:active {
+    border: 0;
+    outline: 0;
+}
