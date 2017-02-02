@@ -13,15 +13,21 @@
     margin: 0 auto;
 }
 
-.footer-right {
-    float: right;
-    font-size: x-small;
+.footer {
+    font-size: small;
 }
 
-.footer-left {
-    float: left;
-    font-size: x-small;
+.right {
+    float: right;
 }
+
+.left {
+    float: left;
+}
+
+
+/*modified version of https://codepen.io/AmrSubZero/pen/dxpri codepen.  Original credit
+  goes to Amr SubZero */
 
 select {
     background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='45px' height='45px'><polyline points='46.139,15.518 25.166,36.49 4.193,15.519'/></svg>");

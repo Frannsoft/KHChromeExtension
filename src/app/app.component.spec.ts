@@ -51,7 +51,7 @@ describe('AppComponent', () => {
     fixture.whenStable().then(() => {
       expect(app.characters).not.toBeUndefined();
 
-      app.sortChars(new CharacterSortOption(Charactersort.DisplayNameDescending));
+      app.sortChars(new CharacterSortOption(Charactersort.Descending));
 
       let lastCharacter: Character = app.characters[0];
       expect(lastCharacter.displayName).toBe('Zero Suit Samus');
@@ -66,29 +66,13 @@ describe('AppComponent', () => {
     fixture.whenStable().then(() => {
       expect(app.characters).not.toBeUndefined();
 
-      app.sortChars(new CharacterSortOption(Charactersort.DisplayNameAscending));
+      app.sortChars(new CharacterSortOption(Charactersort.Ascending));
 
       let lastCharacter: Character = app.characters[0];
       expect(lastCharacter.displayName).toBe('Yoshi');
     });
   }));
 
-  it('should properly re-sort character when KuroganeHammer id order sort used', async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    let app: AppComponent = fixture.debugElement.componentInstance;
-
-    app.ngOnInit();
-    fixture.whenStable().then(() => {
-      expect(app.characters).not.toBeUndefined();
-
-      // mixup the sort order since kh order is default      
-      app.sortChars(new CharacterSortOption(Charactersort.DisplayNameDescending));
-      app.sortChars(new CharacterSortOption(Charactersort.KuroganeHammerOrder));
-
-      let lastCharacter: Character = app.characters[0];
-      expect(lastCharacter.displayName).toBe('Yoshi');
-    });
-  }));
 
   it('should properly re-sort character when sort option set', async(() => {
     let fixture = TestBed.createComponent(AppComponent);
@@ -98,10 +82,10 @@ describe('AppComponent', () => {
     fixture.whenStable().then(() => {
       expect(app.characters).not.toBeUndefined();
 
-      app.sortChars(new CharacterSortOption(Charactersort.KuroganeHammerOrder));
+      app.sortChars(new CharacterSortOption(Charactersort.Ascending));
       expect(app.characters[0].displayName).toBe('Yoshi');
 
-      app.characterSortOption = new CharacterSortOption(Charactersort.DisplayNameDescending);
+      app.characterSortOption = new CharacterSortOption(Charactersort.Descending);
 
       expect(app.characters[0].displayName).toBe('Zero Suit Samus');
     });
