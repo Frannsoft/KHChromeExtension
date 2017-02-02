@@ -17,7 +17,7 @@ export class CharactersimagesComponent extends CharactersView implements OnInit 
   }
 
   test() {
-    alert('works!');
+    alert('works!!');
   }
 
 }
