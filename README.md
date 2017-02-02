@@ -10,4 +10,8 @@ Left-clicking a character tile in the extension will open up a new tab in Chrome
 Right-clicking a character tile in the extension will bring up a panel next to the chrome extension with the character's data in a more compact format.
 
 ### Tech stack
-The extension is built with Angular 2 (using Angular-CLI) and TypeScript.  
+The extension is built with:
+ - Angular 2 (using Angular-CLI) and TypeScript. 
+ - Jasmine and Karma (testing)
+ - VS Code
+ - TravisCI (CI)
