@@ -16,4 +16,8 @@ export class CharactersimagesComponent extends CharactersView implements OnInit 
   ngOnInit() {
   }
 
+  test() {
+    alert('works!');
+  }
+
 }
