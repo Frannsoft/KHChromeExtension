@@ -1,0 +1,16 @@
+<div class="container" *ngIf="character">
+    <div class="movement-data">
+        <ul>
+            <li *ngFor="let movement of movements">
+                <span>{{movement.name}}</span>
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <div class="move-data">
+        <ul>
+            <li *ngFor="let move of moves">
+                <span>{{move.name}}</span>
+        </ul>
+    </div>
+</div>

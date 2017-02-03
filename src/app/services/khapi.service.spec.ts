@@ -21,7 +21,7 @@ describe('KhapiService', () => {
     expect(characters).not.toBeNull();
   }));
 
-  it('should get character data with expected properties', inject([KhapiService], (service: KhapiService) => {
+  it('should get character metadata with expected properties', inject([KhapiService], (service: KhapiService) => {
     service.getCharacterMetadata().then(characters => {
       characters.forEach(c => {
         expect(c.displayName).not.toBeNull();
@@ -30,5 +30,35 @@ describe('KhapiService', () => {
         expect(c.name).not.toBeNull();
       });
     });
+  }));
+
+  it('should get character movement data with expected properties', inject([KhapiService], (service: KhapiService) => {
+    service.getCharacterMovementData(2).then(movements => {
+      movements.forEach(m => {
+        expect(m.id).not.toBeNull();
+        expect(m.value).not.toBeNull();
+        expect(m.ownerId).not.toBeNull();
+        expect(m.name).not.toBeNull();
+      });
+    });
+  }));
+
+  it('should get character move data with expected properties', inject([KhapiService], (service: KhapiService) => {
+    service.getCharacterMoveData(2).then(moves => {
+      moves.forEach(m => {
+        expect(m.id).not.toBeNull();
+        expect(m.angle).not.toBeNull();
+        expect(m.autoCancel).not.toBeNull();
+        expect(m.baseDamage).not.toBeNull();
+        expect(m.baseKnockBackSetKnockback).not.toBeNull();
+        expect(m.firstActionableFrame).not.toBeNull();
+        expect(m.hitboxActive).not.toBeNull();
+        expect(m.knockbackGrowth).not.toBeNull();
+        expect(m.landingLag).not.toBeNull();
+        expect(m.name).not.toBeNull();
+        expect(m.type).not.toBeNull();
+        expect(m.ownerId).not.toBeNull();
+      });
+    }).catch(reason => console.error('AAAA' + reason));
   }));
 });

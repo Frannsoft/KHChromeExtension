@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Character } from '../../models/Character';
 import { CharactersView } from '../charactersview';
+import { KhapiService } from '../../services/khapi.service';
 
 @Component({
   selector: 'app-charactersimages',
@@ -9,15 +10,19 @@ import { CharactersView } from '../charactersview';
 })
 export class CharactersimagesComponent extends CharactersView implements OnInit {
 
-  constructor() {
+  showDetails: boolean;
+  selectedCharacter: Character;
+
+  constructor(private khapiService: KhapiService) {
     super();
   }
 
   ngOnInit() {
   }
 
-  test() {
-    alert('works!!');
+  viewDetails(character: Character) {
+      this.showDetails = true;
+      this.selectedCharacter = character;
+    return false;
   }
-
 }

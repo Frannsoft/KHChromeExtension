@@ -20,6 +20,12 @@
     border-radius: 20%;
 }
 
+.character-viewer {
+    position: absolute;
+    left: 200px;
+    top: 150px;
+}
+
 * {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;

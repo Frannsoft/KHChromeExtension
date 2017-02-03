@@ -15,8 +15,9 @@ import { CharacterSortOption } from './models/CharacterSortOption';
 })
 export class AppComponent implements OnInit {
 
+  showDetails: boolean;
+  selectedCharacter: Character;
   characterSortOptions: Array<CharacterSortOption>;
-
   activeCharacterSortOption: CharacterSortOption;
   characters: Character[];
 
@@ -69,6 +70,12 @@ export class AppComponent implements OnInit {
     else {
       this.activeCharacterSortOption = foundSortOption;
     }
+  }
+
+  viewDetails(character: Character) {
+      this.showDetails = true;
+      this.selectedCharacter = character;
+    return false;
   }
 }
 
