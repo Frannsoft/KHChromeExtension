@@ -59,6 +59,10 @@ export class AppComponent implements OnInit {
     this.storageService.setStoredSortOption(characterSortOption);
   }
 
+  toggleDetails() {
+    this.showDetails = false;
+  }
+
   assignActiveSortOption(sortOption: CharacterSortOption) {
     let foundSortOption = this.characterSortOptions.find(option => option.name === sortOption.name);
 

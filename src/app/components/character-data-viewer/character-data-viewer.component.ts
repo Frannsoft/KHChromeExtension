@@ -35,4 +35,8 @@ export class CharacterDataViewerComponent implements OnInit {
   get character(): Character {
     return this._character;
   }
+
+  toggleItem(move: Move) {
+    move.isShown = !move.isShown;
+  }
 }

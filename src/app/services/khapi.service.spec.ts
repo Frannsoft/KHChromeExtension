@@ -59,6 +59,6 @@ describe('KhapiService', () => {
         expect(m.type).not.toBeNull();
         expect(m.ownerId).not.toBeNull();
       });
-    }).catch(reason => console.error('AAAA' + reason));
+    });
   }));
 });

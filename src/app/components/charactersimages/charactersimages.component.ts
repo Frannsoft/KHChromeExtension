@@ -10,8 +10,8 @@ import { KhapiService } from '../../services/khapi.service';
 })
 export class CharactersimagesComponent extends CharactersView implements OnInit {
 
-  showDetails: boolean;
-  selectedCharacter: Character;
+  // showDetails: boolean;
+  // selectedCharacter: Character;
 
   constructor(private khapiService: KhapiService) {
     super();
@@ -20,9 +20,9 @@ export class CharactersimagesComponent extends CharactersView implements OnInit 
   ngOnInit() {
   }
 
-  viewDetails(character: Character) {
-      this.showDetails = true;
-      this.selectedCharacter = character;
-    return false;
-  }
+  // viewDetails(character: Character) {
+  //     this.showDetails = true;
+  //     this.selectedCharacter = character;
+  //   return false;
+  // }
 }
