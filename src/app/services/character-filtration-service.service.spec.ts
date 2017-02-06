@@ -5,7 +5,7 @@ import { CharacterFiltrationService } from './character-filtration-service.servi
 import { CharacterMockData } from './character.mock.data';
 import { Character } from '../models/character';
 
-describe('CharacterFiltrationServiceService', () => {
+describe('CharacterFiltrationService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [CharacterFiltrationService]
@@ -31,4 +31,13 @@ describe('CharacterFiltrationServiceService', () => {
     expect(modifiedCharacterData.find(c => c.name.startsWith(characterNameUnderTest)).fullUrl.startsWith('http://dummy'));
     expect(modifiedCharacterData.length).toBeGreaterThan(0);
   }));
+
+  it('should not modify any data when no mii fighter data present',
+    inject([CharacterFiltrationService], (service: CharacterFiltrationService) => {
+
+      let characters = new CharacterMockData().characters;
+      let modifiedCharacterData = service.modifyMiiFighterUrls(characters);
+
+      expect(modifiedCharacterData.length).toEqual(characters.length);
+    }));
 });
