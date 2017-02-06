@@ -3,35 +3,38 @@ import { Character } from '../models/character';
 import { Move } from '../models/move';
 import { Movement } from '../models/movement';
 import { Http } from '@angular/http';
+import { CharacterFiltrationService } from './character-filtration-service.service';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class KhapiService {
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private characterFiltrationService: CharacterFiltrationService) { }
 
   // get character metadata for all characters
-  getCharacterMetadata(): Promise<Character[]> {
+  getCharacterMetadata(modifyMiiFighterUrl: boolean): Promise<Character[]> {
     return this.http.get('http://api.kuroganehammer.com/api/characters')
       .toPromise()
-      .then(response => response.json() as Character[])
+      .then(response => {
+        let responseData = response.json() as Character[];
+
+        if (modifyMiiFighterUrl) {
+          let miiFighterAdjustedCharacterData = this.modifyMiiFighterData(responseData);
+          return miiFighterAdjustedCharacterData;
+        } else {
+          return responseData;
+        }
+      })
       .catch(this.handleError);
   }
 
-  // get all move data for a specific character  
-  getCharacterMoveData(id: number): Promise<Move[]> {
-    return this.http.get('http://api.kuroganehammer.com/api/characters/' + id + '/moves')
-      .toPromise()
-      .then(response => response.json() as Move[])
-      .catch(this.handleError);
-  }
-
-  // get all movement data for a specific character  
-  getCharacterMovementData(id: number): Promise<Movement[]> {
-    return this.http.get('http://api.kuroganehammer.com/api/characters/' + id + '/movements')
-      .toPromise()
-      .then(response => response.json() as Movement[])
-      .catch(this.handleError);
+  // there are no official images for individual mii fighters and I do not have enough experience to make decent quality ones of my own.
+  // this will remove all but one mii fighter entry and change the remaining mii fighter fullUrl data to 
+  // point to the hub page on the main kh site instead of the individual character page.
+  private modifyMiiFighterData(characters: Character[]) {
+    return this.characterFiltrationService.modifyMiiFighterUrls(characters);
   }
 
   private handleError(error: any): Promise<any> {

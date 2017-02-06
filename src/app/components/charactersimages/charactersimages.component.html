@@ -1,6 +1,6 @@
 <div *ngIf="characters" class="characters-container col-xs-12 col-sm-12 col-md-offset-2 col-md-8 col-md-offset-2">
     <ul>
-        <li (contextmenu)="viewDetails(character)" *ngFor="let character of characters" class="box fade-in one characters-list-item">
+        <li (contextmenu)="viewDetails(character)" id="{{character.displayname}}" *ngFor="let character of characters" class="box fade-in one characters-list-item">
             <div class="characters-link item top">
                 <a target="_blank" href="{{character.fullUrl}}">
                     <img class="characters-image" [src]="character.thumbnailUrl" title="{{character.displayName}}" />
