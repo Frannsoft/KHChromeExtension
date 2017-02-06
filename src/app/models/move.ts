@@ -11,4 +11,5 @@ export class Move {
     name: string;
     ownerId: number;
     id: number;
+    isShown: boolean;
 }

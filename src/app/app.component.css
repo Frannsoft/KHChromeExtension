@@ -29,6 +29,10 @@
     text-align: center;
 }
 
+.character-details {
+    width: 50%;
+}
+
 .characters-list-item {
     display: inline-block;
     /*shows last two characters on the left instead of in center */

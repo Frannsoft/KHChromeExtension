@@ -8,7 +8,6 @@
             <option *ngFor="let sortOption of characterSortOptions" [ngValue]="sortOption">{{sortOption.name}}</option>
         </select>
     </div>
-    <!--<app-charactersimages [characters]="characters"></app-charactersimages>-->
     <div *ngIf="characters" class="characters-container col-xs-12 col-sm-12 col-md-offset-2 col-md-8 col-md-offset-2">
         <ul>
             <li (contextmenu)="viewDetails(character)" *ngFor="let character of characters" class="box fade-in one characters-list-item">
@@ -20,9 +19,11 @@
             </li>
         </ul>
     </div>
-    <div *ngIf="showDetails">
+    <hr>
+    <!--<div *ngIf="showDetails" class="character-details">
+        <button (click)="toggleDetails()">X</button>
         <app-character-data-viewer [character]="selectedCharacter"></app-character-data-viewer>
-    </div>
+    </div>-->
     <br>
     <span class="footer left">Feedback? FrannSoftDev@outlook.com</span>
     <span class="footer right">Powered by the <a target="_blank" href="https://github.com/Frannsoft/FrannHammer">FrannHammer API</a></span>

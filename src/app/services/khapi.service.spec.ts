@@ -17,12 +17,17 @@ describe('KhapiService', () => {
   }));
 
   it('should get character data', inject([KhapiService], (service: KhapiService) => {
-    let characters = service.getCharacterMetadata();
-    expect(characters).not.toBeNull();
+    service.getCharacterMetadata().then(characters => {
+      expect(characters).not.toBeNull();
+      expect(characters.length).toBeGreaterThan(0);
+    });
   }));
 
   it('should get character metadata with expected properties', inject([KhapiService], (service: KhapiService) => {
     service.getCharacterMetadata().then(characters => {
+
+      expect(characters).not.toBeNull();
+      expect(characters.length).toBeGreaterThan(0);
       characters.forEach(c => {
         expect(c.displayName).not.toBeNull();
         expect(c.fullUrl).not.toBeNull();
@@ -34,6 +39,8 @@ describe('KhapiService', () => {
 
   it('should get character movement data with expected properties', inject([KhapiService], (service: KhapiService) => {
     service.getCharacterMovementData(2).then(movements => {
+      expect(movements).not.toBeNull();
+      expect(movements.length).toBeGreaterThan(0);
       movements.forEach(m => {
         expect(m.id).not.toBeNull();
         expect(m.value).not.toBeNull();
@@ -45,6 +52,10 @@ describe('KhapiService', () => {
 
   it('should get character move data with expected properties', inject([KhapiService], (service: KhapiService) => {
     service.getCharacterMoveData(2).then(moves => {
+
+      expect(moves).not.toBeNull();
+      expect(moves.length).toBeGreaterThan(0);
+
       moves.forEach(m => {
         expect(m.id).not.toBeNull();
         expect(m.angle).not.toBeNull();
@@ -59,6 +70,6 @@ describe('KhapiService', () => {
         expect(m.type).not.toBeNull();
         expect(m.ownerId).not.toBeNull();
       });
-    }).catch(reason => console.error('AAAA' + reason));
+    });
   }));
 });
