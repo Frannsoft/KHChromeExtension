@@ -3,7 +3,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { CharactersimagesComponent } from './components/charactersimages/charactersimages.component';
-import { CharacterDataViewerComponent } from './components/character-data-viewer/character-data-viewer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -22,8 +21,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        CharactersimagesComponent,
-        CharacterDataViewerComponent
+        CharactersimagesComponent
       ],
       imports: [
         BrowserModule,

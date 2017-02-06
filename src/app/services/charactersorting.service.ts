@@ -46,11 +46,6 @@ export class CharactersortingService {
     });
   }
 
-  // sorts by character id  
-  sortByKuroganeHammerSiteOrder(characters: Character[]) {
-    characters.sort((a, b) => a.id - b.id);
-  }
-
   sortByDisplayNameDescending(characters: Character[]) {
     characters.sort((a, b) => {
       if (a.displayName > b.displayName) {

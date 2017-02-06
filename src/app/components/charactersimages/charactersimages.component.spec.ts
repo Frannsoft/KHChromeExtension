@@ -4,7 +4,6 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { KhapiService } from '../../services/khapi.service';
 import { CharactersimagesComponent } from './charactersimages.component';
-import { CharacterDataViewerComponent } from '../character-data-viewer/character-data-viewer.component';
 import { HttpModule } from '@angular/http';
 
 describe('CharactersimagesComponent', () => {
@@ -14,7 +13,7 @@ describe('CharactersimagesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule],
-      declarations: [CharactersimagesComponent, CharacterDataViewerComponent],
+      declarations: [CharactersimagesComponent],
       providers: [KhapiService]
     })
     .compileComponents();
