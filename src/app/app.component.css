@@ -29,10 +29,6 @@
     text-align: center;
 }
 
-.character-details {
-    width: 50%;
-}
-
 .characters-list-item {
     display: inline-block;
     /*shows last two characters on the left instead of in center */
@@ -49,12 +45,6 @@
     width: 50px;
     height: 50px;
     border-radius: 20%;
-}
-
-.character-viewer {
-    position: absolute;
-    left: 200px;
-    top: 150px;
 }
 
 * {

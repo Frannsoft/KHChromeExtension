@@ -21,7 +21,8 @@ export class CharacterFiltrationService {
       return characters;
     }
     miiFighter.fullUrl = 'http://kuroganehammer.com/Smash4/Mii';
-
+    miiFighter.displayName = 'Mii fighters';
+    miiFighter.name = 'Miifighers';
     // remove extra mii fighters and just show the one modified above        
     let restOfCharacters = characters.filter(c => !c.name.startsWith('Mii'));
     restOfCharacters.push(miiFighter);
