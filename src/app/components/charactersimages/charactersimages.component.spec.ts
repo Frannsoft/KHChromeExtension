@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { KhapiService } from '../../services/khapi.service';
 import { CharactersimagesComponent } from './charactersimages.component';
+import { CharacterFiltrationService } from '../../services/character-filtration-service.service';
 import { HttpModule } from '@angular/http';
 
 describe('CharactersimagesComponent', () => {
@@ -14,7 +15,7 @@ describe('CharactersimagesComponent', () => {
     TestBed.configureTestingModule({
       imports: [HttpModule],
       declarations: [CharactersimagesComponent],
-      providers: [KhapiService]
+      providers: [KhapiService, CharacterFiltrationService]
     })
     .compileComponents();
   }));
