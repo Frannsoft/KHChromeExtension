@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { CharactersimagesComponent } from './components/charactersimages/charactersimages.component';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { StorageService } from './services/storage.service';
+import { CharacterFiltrationService } from './services/character-filtration-service.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { StorageService } from './services/storage.service';
       storageType: 'localStorage'
     })
   ],
-  providers: [KhapiService, CharactersortingService, StorageService],
+  providers: [KhapiService, CharactersortingService, StorageService, CharacterFiltrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

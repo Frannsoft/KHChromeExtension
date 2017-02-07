@@ -12,10 +12,10 @@
     },
     "author": "@FrannDotExe",
     "manifest_version": 2,
-    "name": "KuroganeHammer Smash Wii U Chrome Extension",
+    "name": "KuroganeHammer Smash 4 Chrome Extension",
     "permissions": ["http://api.kuroganehammer.com/api/*/", "storage"],
     "short_name": "Official KuroganeHammer Chrome Extension",
     "update_url": "https://clients2.google.com/service/update2/crx",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "web_accessible_resources": ["css/*.css", "js/*.js", "app/*.js", "node_modules/*.js"]
 }

@@ -73,7 +73,6 @@ describe('AppComponent', () => {
     });
   }));
 
-
   it('should properly re-sort character when sort option set', async(() => {
     let fixture = TestBed.createComponent(AppComponent);
     let app: AppComponent = fixture.debugElement.componentInstance;

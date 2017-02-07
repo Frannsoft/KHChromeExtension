@@ -16,7 +16,6 @@ import { CharacterSortOption } from './models/CharacterSortOption';
 export class AppComponent implements OnInit {
 
   characterSortOptions: Array<CharacterSortOption>;
-
   activeCharacterSortOption: CharacterSortOption;
   characters: Character[];
 
@@ -32,7 +31,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // get characters and load sort type
-    this.khapiService.getCharacterMetadata()
+    this.khapiService.getCharacterMetadata(true)
       .then(characters => {
         this.characters = characters;
 
@@ -65,8 +64,7 @@ export class AppComponent implements OnInit {
       // assign kh sort order by default
       this.activeCharacterSortOption = this.characterSortOptions
         .find(option => option.name === Charactersort.Ascending.toString());
-    }
-    else {
+    } else {
       this.activeCharacterSortOption = foundSortOption;
     }
   }

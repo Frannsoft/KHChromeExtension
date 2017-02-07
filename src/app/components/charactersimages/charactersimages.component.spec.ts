@@ -2,8 +2,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-
+import { KhapiService } from '../../services/khapi.service';
 import { CharactersimagesComponent } from './charactersimages.component';
+import { CharacterFiltrationService } from '../../services/character-filtration-service.service';
+import { HttpModule } from '@angular/http';
 
 describe('CharactersimagesComponent', () => {
   let component: CharactersimagesComponent;
@@ -11,7 +13,9 @@ describe('CharactersimagesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CharactersimagesComponent ]
+      imports: [HttpModule],
+      declarations: [CharactersimagesComponent],
+      providers: [KhapiService, CharacterFiltrationService]
     })
     .compileComponents();
   }));
