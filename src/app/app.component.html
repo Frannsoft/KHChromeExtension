@@ -2,13 +2,31 @@
     <div class="imagediv">
         <img src="http://kuroganehammer.com/logo/KH%20LOGO1.png" />
     </div>
-    <div>
-        <label>Order:</label>
-        <select class="green" [(ngModel)]="characterSortOption">
+    <div *ngIf="isDoneLoading">
+        <div>
+            <label>Order:</label>
+            <select class="green" [(ngModel)]="characterSortOption">
             <option *ngFor="let sortOption of characterSortOptions" [ngValue]="sortOption">{{sortOption.name}}</option>
         </select>
+        </div>
+        <app-charactersimages [characters]="characters"></app-charactersimages>
     </div>
-    <app-charactersimages [characters]="characters"></app-charactersimages>
+    <div *ngIf="!isDoneLoading">
+        <div class="is-loading">
+            <div class="sk-cube-grid">
+                <div class="sk-cube sk-cube1"></div>
+                <div class="sk-cube sk-cube2"></div>
+                <div class="sk-cube sk-cube3"></div>
+                <div class="sk-cube sk-cube4"></div>
+                <div class="sk-cube sk-cube5"></div>
+                <div class="sk-cube sk-cube6"></div>
+                <div class="sk-cube sk-cube7"></div>
+                <div class="sk-cube sk-cube8"></div>
+                <div class="sk-cube sk-cube9"></div>
+            </div>
+            <span>Loading... just one moment.</span>
+        </div>
+    </div>
     <hr>
     <br>
     <span class="footer left">Feedback? FrannSoftDev@outlook.com</span>
