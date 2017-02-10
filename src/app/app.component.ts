@@ -18,11 +18,13 @@ export class AppComponent implements OnInit {
   characterSortOptions: Array<CharacterSortOption>;
   activeCharacterSortOption: CharacterSortOption;
   characters: Character[];
+  isDoneLoading: boolean;
 
   constructor(private khapiService: KhapiService,
     private characterSortingService: CharactersortingService,
     private storageService: StorageService) {
 
+    this.isDoneLoading = false;
     this.characterSortOptions = [
       new CharacterSortOption(Charactersort.Ascending),
       new CharacterSortOption(Charactersort.Descending)
@@ -31,16 +33,17 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // get characters and load sort type
-    this.khapiService.getCharacterMetadata(true)
-      .then(characters => {
-        this.characters = characters;
+      this.khapiService.getCharacterMetadata(true)
+        .then(characters => {
+          this.characters = characters;
 
-        let storedSortTypeOption = this.storageService.getStoredSortOption();
+          let storedSortTypeOption = this.storageService.getStoredSortOption();
 
-        if (storedSortTypeOption !== null) {
-          this.sortChars(storedSortTypeOption);
-        }
-      });
+          if (storedSortTypeOption !== null) {
+            this.sortChars(storedSortTypeOption);
+          }
+          this.isDoneLoading = true;
+        });
   }
 
   set characterSortOption(characterSortOption: CharacterSortOption) {
